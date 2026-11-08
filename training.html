@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My Training: Chasing a Sub-17:30 5K</title>
+
+  <!-- Custom font: Inter, loaded from Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- D3 (version pinned so the chart can't break when D3 releases a new version) -->
+  <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+</head>
+<body>
+
+  <header class="site-header">
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="training.html" aria-current="page">My Training</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>My Training: Chasing a Sub-17:30 5K</h1>
+
+    <!-- Wide banner image, cropped with CSS (object-fit) -->
+    <figure class="banner">
+      <img src="images/track.jpg" alt="Red running track with white lane lines and numbered lanes">
+      <figcaption>
+        Photo: <a href="https://unsplash.com/photos/running-track-with-numbered-lanes-52p1K0d0euM">Austris Augusts on Unsplash</a>
+      </figcaption>
+    </figure>
+
+    <p>
+      Since late August, I’ve followed a 15-week plan aimed at a 5K on December 6. My goal is
+      to break 17:30 and beat the 17:37 I ran this March. The race is on the same course as
+      that 17:37: mostly flat, but with a lot of turns, so holding pace through the corners
+      matters as much as fitness.
+    </p>
+    <p>
+      The plan is simple. I run six days a week, with a long run every Sunday, and add miles
+      slowly. Most weeks include two hard sessions: a threshold run (which means difficult but
+      controlled) and intervals at 5K race pace on the track.
+    </p>
+
+    <h2>Weekly Mileage</h2>
+    <!-- The D3 chart is drawn into this empty div by js/chart.js -->
+    <figure class="chart-figure">
+      <div id="chart"></div>
+      <figcaption>
+        Miles per week, Aug 25 – Dec 6. Solid bars show what I ran through Nov 8. The faded,
+        dashed bars show the plan for future weeks. Hover over a bar for details.
+      </figcaption>
+    </figure>
+    <p>
+      The first week was partial, at 14.3 miles, and mileage climbed to 21 by Week 4. In Week 5
+      I got sick and ran only twice. Weeks 6 through 9 rebuilt to about 26 miles. In Week 10 I
+      held steady around a 5K time trial on the track. It didn’t go the way I wanted, but it
+      showed me where my fitness is. In Week 11 (this week) I reached 30 miles for the first
+      time! Next week the plan peaks at 32, holds, then tapers so I’m ready to go on race day.
+      Next week’s key workouts are 3 × 2500&nbsp;m at threshold on Tuesday, 5 × 1000&nbsp;m on
+      Thursday, and an 8-mile long run on Sunday.
+    </p>
+
+    <h2>The Plan, Phase by Phase</h2>
+    <ol class="phases">
+      <li><strong>Build (Weeks 1–12):</strong> raise weekly mileage from about 14 to 32, with threshold runs and 5K-pace intervals.</li>
+      <li><strong>Sharpen (Weeks 13–14):</strong> hold mileage and run a 3000&nbsp;m time trial to set race pace.</li>
+      <li><strong>Taper (from Nov 27):</strong> cut mileage by about 40% and keep a few short, fast sessions.</li>
+      <li><strong>Race (Dec 6):</strong> the 5K.</li>
+    </ol>
+  </main>
+
+  <footer class="site-footer">
+    <h2>Contact</h2>
+    <ul class="contact-links">
+      <li><a href="mailto:brookes.se@northeastern.edu">Email</a></li>
+      <li><a href="https://github.com/sebastianbrookes">GitHub</a></li>
+      <li><a href="https://www.strava.com/athletes/117454386">Strava</a></li>
+    </ul>
+  </footer>
+
+  <!-- Our chart code runs last, after the page and D3 have loaded -->
+  <script src="js/chart.js"></script>
+</body>
+</html>

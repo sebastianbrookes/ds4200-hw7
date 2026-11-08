@@ -1,0 +1,249 @@
+/* ===== Color scheme: track-inspired =====
+   All colors live here as variables, so the whole site (and the chart) share one palette. */
+:root {
+  --bg: #faf7f2;         /* warm off-white background */
+  --surface: #f1ebe2;    /* slightly darker tint for the header/footer */
+  --border: #e2d9cc;
+  --text: #1d1b18;       /* near-black body text */
+  --muted: #6b645b;      /* captions, axis labels */
+  --accent: #b23a26;     /* track red: links, current page, chart bars */
+}
+
+/* ===== Typography: Inter everywhere, with a clear size scale ===== */
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 17px;
+  line-height: 1.65;
+}
+
+h1 {
+  font-size: 2.6rem;     /* the biggest heading on the site */
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  text-wrap: balance;    /* evens out line lengths so one word isn't left alone */
+  margin: 0 0 1.5rem;
+}
+
+h2 {
+  font-size: 1.5rem;     /* clearly smaller than h1 */
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  margin: 2.5rem 0 0.75rem;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+/* ===== Layout: one centered column ===== */
+main {
+  max-width: 720px;      /* keeps lines of text a comfortable length */
+  margin: 0 auto;
+  padding: 3rem 1.25rem 4rem;
+}
+
+/* ===== Header navigation ===== */
+.site-header {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+.site-header nav {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 1rem 1.25rem;
+  display: flex;
+  gap: 2rem;
+}
+.site-header a {
+  color: var(--text);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding-bottom: 0.25rem;
+  border-bottom: 3px solid transparent;
+}
+/* The page you're currently on gets a red underline */
+.site-header a[aria-current="page"] {
+  border-bottom-color: var(--accent);
+}
+.site-header a:hover {
+  text-decoration: none;
+  border-bottom-color: var(--accent);
+}
+
+/* ===== Home: text beside the portrait photo ===== */
+.intro-grid {
+  display: grid;
+  grid-template-columns: 1fr 260px;   /* text takes the rest, photo is 260px wide */
+  gap: 2rem;
+  align-items: start;
+}
+.intro-text p:first-child {
+  margin-top: 0;
+}
+
+figure {
+  margin: 0;
+}
+figure img {
+  display: block;
+  width: 100%;
+  border-radius: 6px;
+}
+figcaption {
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.cta {
+  display: inline-block;
+  font-weight: 600;
+  padding: 0.6rem 1.1rem;
+  border: 2px solid var(--accent);
+  border-radius: 999px;
+}
+.cta:hover {
+  background: var(--accent);
+  color: var(--bg);
+  text-decoration: none;
+}
+
+/* ===== Training page: cropped banner ===== */
+.banner {
+  margin-bottom: 2rem;
+}
+.banner img {
+  height: 240px;
+  object-fit: cover;     /* crops the photo to fill the box instead of stretching it */
+}
+
+/* ===== Chart ===== */
+.chart-figure {
+  margin: 1rem 0 1.5rem;
+}
+#chart {
+  overflow-x: auto;      /* on narrow phones, scroll the chart sideways instead of shrinking it */
+}
+#chart svg {
+  display: block;
+  width: 100%;           /* the SVG scales with the page width */
+  min-width: 560px;      /* ...but never so small that the labels become unreadable */
+  height: auto;
+}
+#chart text {
+  font-family: "Inter", system-ui, sans-serif;
+}
+.axis text {
+  fill: var(--muted);
+  font-size: 12px;
+}
+.axis path,
+.axis line {
+  stroke: var(--border);
+}
+.bar.ran {
+  fill: var(--accent);
+}
+.bar.planned {
+  fill: var(--accent);
+  fill-opacity: 0.2;
+  stroke: var(--accent);
+  stroke-width: 1.5;
+  stroke-dasharray: 4 3;  /* dashed outline = not run yet */
+}
+/* Hover: each bar gets a little darker/lighter, but planned bars stay clearly "planned" */
+.bar.ran:hover {
+  fill-opacity: 0.8;
+}
+.bar.planned:hover {
+  fill-opacity: 0.4;
+}
+.axis-title {
+  fill: var(--muted);
+  font-size: 12px;
+}
+.legend-text {
+  fill: var(--text);
+  font-size: 12px;
+}
+.bar-label {
+  fill: var(--text);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* Tooltip box that follows the mouse */
+.tooltip {
+  position: absolute;
+  pointer-events: none;   /* so the tooltip never blocks the mouse */
+  background: var(--text);
+  color: var(--bg);
+  font-size: 0.8rem;
+  line-height: 1.4;
+  padding: 0.5rem 0.7rem;
+  border-radius: 6px;
+  max-width: 220px;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+
+/* ===== Phases list ===== */
+.phases li {
+  margin-bottom: 0.6rem;
+  padding-left: 0.25rem;
+}
+.phases li::marker {
+  color: var(--accent);
+  font-weight: 800;
+}
+
+/* ===== Footer / contact ===== */
+.site-footer {
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  padding: 1.5rem 1.25rem;
+  text-align: center;
+}
+.site-footer h2 {
+  margin: 0 0 0.5rem;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+.contact-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  font-weight: 600;
+}
+
+/* ===== Phones: stack the home layout and shrink the big heading ===== */
+@media (max-width: 640px) {
+  h1 {
+    font-size: 2rem;
+  }
+  .intro-grid {
+    grid-template-columns: 1fr;
+  }
+  .portrait {
+    max-width: 320px;
+  }
+  .banner img {
+    height: 160px;
+  }
+}
